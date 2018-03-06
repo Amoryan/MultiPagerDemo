@@ -83,17 +83,9 @@ public interface PageTransformer {
 ## ScalePageTransformer
 　　于是乎我写了一个切换尺寸变换的类ScalePageTransformer，如下。
 ```kotlin
-class ScalePageTransformer : ViewPager.PageTransformer {
-
-    companion object {
-        const val DEFAULT_MIN_SCALE = 0.8F
-    }
-
-    private var minScale = DEFAULT_MIN_SCALE
-
-    fun setMinScale(scale: Float) {
-        this.minScale = scale
-    }
+class ScalePageTransformer(
+        private var minScale: Float
+) : ViewPager.PageTransformer {
 
     override fun transformPage(page: View?, position: Float) {
         val size = when {
@@ -112,17 +104,9 @@ class ScalePageTransformer : ViewPager.PageTransformer {
 ## RotatePageTransformer
 　　旋转跳跃，我闭着眼~
 ```kotlin
-class RotatePageTransformer : ViewPager.PageTransformer {
-
-    companion object {
-        const val DEFAULT_ROTATE_DEGREE: Float = 10f
-    }
-
-    private var rotateDegree: Float = DEFAULT_ROTATE_DEGREE
-
-    fun setRotateDegree(degree: Float) {
-        this.rotateDegree = degree
-    }
+class RotatePageTransformer(
+        private var rotateDegree: Float
+) : ViewPager.PageTransformer {
 
     override fun transformPage(page: View?, position: Float) {
         if (page == null) return
@@ -161,17 +145,9 @@ class RotatePageTransformer : ViewPager.PageTransformer {
 ## AlphaPageTransformer
 　　再来个透明度变化的吧。
 ```kotlin
-class AlphaPageTransformer : ViewPager.PageTransformer {
-
-    companion object {
-        const val DEFAULT_MIN_ALPHA: Float = 0.5f
-    }
-
-    private var minAlpha: Float = DEFAULT_MIN_ALPHA
-
-    fun setMinAlpha(alphaConfig: Float) {
-        minAlpha = alphaConfig
-    }
+class AlphaPageTransformer(
+        private var minAlpha: Float
+) : ViewPager.PageTransformer {
 
     override fun transformPage(page: View?, position: Float) {
         val alpha: Float = when {
