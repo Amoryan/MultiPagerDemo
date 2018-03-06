@@ -185,5 +185,5 @@ class AlphaPageTransformer : ViewPager.PageTransformer {
 
 }
 ```
-　　效果图如下，日子还长，别太失望~
+　　效果图如下，日子还长，别太失望~<br />
 ![alphaResult](/images/alphaResult.gif)
