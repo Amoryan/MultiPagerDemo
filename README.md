@@ -21,7 +21,7 @@ override fun getPageWidth(position: Int): Float {
     return 0.8f
 }
 ```
-　　它的效果如下所示，可以看到，默认每个pager都是 **<font color="#1b8fe6">局左显示</font>** 的。
+　　它的效果如下所示，可以看到，默认每个pager都是 **<font color="#1b8fe6">局左显示</font>** 的。<br />
 ![getPageWidth()](/images/getPageWidth.gif)
 ## clipChildren
 　　第二种实现方式就是通过控件的 **<font color="#1b8fe6">clipChildren</font>** 属性，默认这个属性是true，我们需要将其设置为false，表示超出控件的内容范围也要显示出来。
@@ -58,5 +58,5 @@ val metrics = DisplayMetrics()
 windowManager.defaultDisplay.getMetrics(metrics)
 viewPager.pageMargin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f, metrics).toInt()
 ```
-　　效果图如下所示。
+　　效果图如下所示。<br />
 ![result](/images/result.gif)
