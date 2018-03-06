@@ -107,7 +107,7 @@ class ScalePageTransformer : ViewPager.PageTransformer {
 
 }
 ```
-　　效果图如下，这样就比较有趣了，嗯，我是这么认为的。日子还长，别太失望~<br />
+　　效果图如下，这样就比较有趣了，嗯，我是这么认为的。<br />
 ![scaleResult](/images/scaleResult.gif)
 ## RotatePageTransformer
 　　旋转跳跃，我闭着眼~
@@ -158,3 +158,32 @@ class RotatePageTransformer : ViewPager.PageTransformer {
 ```
 　　来看看这个旋转变换的效果图。<br />
 ![rotateResult](/images/rotateResult.gif)
+## AlphaPageTransformer
+　　再来个透明度变化的吧。
+```kotlin
+class AlphaPageTransformer : ViewPager.PageTransformer {
+
+    companion object {
+        const val DEFAULT_MIN_ALPHA: Float = 0.5f
+    }
+
+    private var minAlpha: Float = DEFAULT_MIN_ALPHA
+
+    fun setMinAlpha(alphaConfig: Float) {
+        minAlpha = alphaConfig
+    }
+
+    override fun transformPage(page: View?, position: Float) {
+        val alpha: Float = when {
+            position < -1 -> minAlpha
+            position >= -1 && position < 0 -> minAlpha + (1 - minAlpha) * (1 + position)
+            position >= 0 && position < 1 -> minAlpha + (1 - minAlpha) * (1 - position)
+            else -> minAlpha
+        }
+        page?.alpha = alpha
+    }
+
+}
+```
+　　效果图如下，日子还长，别太失望~
+![alphaResult](/images/alphaResult.gif)
