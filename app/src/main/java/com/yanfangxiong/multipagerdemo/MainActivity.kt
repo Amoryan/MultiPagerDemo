@@ -12,13 +12,18 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        const val MIN_SIZE = 0.8f
+    }
+
     private val views: ArrayList<View> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        views.add(LayoutInflater.from(this).inflate(R.layout.pageritem, null))
+        val firstView = LayoutInflater.from(this).inflate(R.layout.pageritem, null)
+        views.add(firstView)
         views.add(LayoutInflater.from(this).inflate(R.layout.pageritem, null))
         views.add(LayoutInflater.from(this).inflate(R.layout.pageritem, null))
 
@@ -45,5 +50,6 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
+        viewPager.setPageTransformer(false, ScalePageTransformer())
     }
 }

@@ -60,3 +60,51 @@ viewPager.pageMargin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f
 ```
 　　效果图如下所示。<br />
 ![result](/images/result.gif)
+# 扩展
+　　感觉好像有点单调哈。我也是这么觉得的，那么我们来加点有趣的东西吧。ViewPager有个PageTransformer接口。
+```java
+public interface PageTransformer {
+    /**
+     * Apply a property transformation to the given page.
+     *
+     * @param page Apply the transformation to this page
+     * @param position Position of page relative to the current front-and-center
+     *                 position of the pager. 0 is front and center. 1 is one full
+     *                 page position to the right, and -1 is one page position to the left.
+     */
+    void transformPage(View page, float position);
+}
+```
+　　这里我就不写研究过程了，position的范围可以分为四段(通用的)，是当前page的左上角相对于ViewPager的位置。
+1. position < -1
+2. -1 <= position < 0
+3. 0 <= position < 1
+4. position > 1
+　　于是乎我写了这样ScalePageTransformer类。
+```kotlin
+class ScalePageTransformer : ViewPager.PageTransformer {
+
+    companion object {
+        const val DEFAULT_MIN_SCALE = 0.8F
+    }
+
+    private var minScale = DEFAULT_MIN_SCALE
+
+    fun setMinScale(scale: Float) {
+        this.minScale = scale
+    }
+
+    override fun transformPage(page: View?, position: Float) {
+        val size = when {
+            position < -1 -> minScale
+            position >= -1 && position < 0 -> minScale + (1 - minScale) * (1 + position)
+            position < 1 -> minScale + (1 - minScale) * (1 - position)
+            else -> minScale
+        }
+        page?.scaleY = size
+    }
+
+}
+```
+　　效果图如下，这样就比较有趣了，嗯，我是这么认为的。日子还长，别太失望~<br />
+![scaleResult](/images/scaleResult.gif)
