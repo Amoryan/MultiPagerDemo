@@ -8,6 +8,7 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.yanfangxiong.multipagerdemo.factory.ScalePageTransformerFactory
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -50,6 +51,6 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-        viewPager.setPageTransformer(false, AlphaPageTransformer())
+        viewPager.setPageTransformer(false, ScalePageTransformerFactory().generatePageTransformer())
     }
 }

@@ -1,4 +1,4 @@
-package com.yanfangxiong.multipagerdemo
+package com.yanfangxiong.multipagerdemo.tranformer
 
 import android.support.v4.view.ViewPager
 import android.view.View
