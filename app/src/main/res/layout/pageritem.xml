@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:gravity="center"
-        android:text="一屏显示多个item"/>
+        android:text="一屏显示多个item"
+        android:textColor="#333333"/>
 
 </LinearLayout>

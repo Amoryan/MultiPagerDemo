@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#bbbbbb"
     android:clipChildren="false"
+    android:gravity="center"
     android:layerType="software"
     android:orientation="vertical"
     tools:context="com.yanfangxiong.multipagerdemo.MainActivity">
@@ -14,7 +16,6 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:layout_gravity="center"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:clipChildren="false"
