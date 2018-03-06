@@ -9,7 +9,8 @@ import com.yanfangxiong.multipagerdemo.tranformer.AlphaPageTransformer
 class AlphaPageTransformerFactory : PageTransformerFactory {
 
     override fun generatePageTransformer(): ViewPager.PageTransformer {
-        return AlphaPageTransformer()
+        val defaultAlpha = 0.5f
+        return AlphaPageTransformer(defaultAlpha)
     }
 
 }

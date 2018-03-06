@@ -6,17 +6,9 @@ import android.view.View
 /**
  * @author fxYan
  */
-class ScalePageTransformer : ViewPager.PageTransformer {
-
-    companion object {
-        const val DEFAULT_MIN_SCALE = 0.8F
-    }
-
-    private var minScale = DEFAULT_MIN_SCALE
-
-    fun setMinScale(scale: Float) {
-        this.minScale = scale
-    }
+class ScalePageTransformer(
+        private var minScale: Float
+) : ViewPager.PageTransformer {
 
     override fun transformPage(page: View?, position: Float) {
         val size = when {

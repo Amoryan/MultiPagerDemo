@@ -6,17 +6,9 @@ import android.view.View
 /**
  * @author fxYan
  */
-class RotatePageTransformer : ViewPager.PageTransformer {
-
-    companion object {
-        const val DEFAULT_ROTATE_DEGREE: Float = 10f
-    }
-
-    private var rotateDegree: Float = DEFAULT_ROTATE_DEGREE
-
-    fun setRotateDegree(degree: Float) {
-        this.rotateDegree = degree
-    }
+class RotatePageTransformer(
+        private var rotateDegree: Float
+) : ViewPager.PageTransformer {
 
     override fun transformPage(page: View?, position: Float) {
         if (page == null) return

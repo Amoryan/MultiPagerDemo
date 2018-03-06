@@ -9,7 +9,8 @@ import com.yanfangxiong.multipagerdemo.tranformer.ScalePageTransformer
 class ScalePageTransformerFactory : PageTransformerFactory {
 
     override fun generatePageTransformer(): ViewPager.PageTransformer {
-        return ScalePageTransformer()
+        val defaultScale = 0.8f
+        return ScalePageTransformer(defaultScale)
     }
 
 }

@@ -6,17 +6,9 @@ import android.view.View
 /**
  * @author fxYan
  */
-class AlphaPageTransformer : ViewPager.PageTransformer {
-
-    companion object {
-        const val DEFAULT_MIN_ALPHA: Float = 0.5f
-    }
-
-    private var minAlpha: Float = DEFAULT_MIN_ALPHA
-
-    fun setMinAlpha(alphaConfig: Float) {
-        minAlpha = alphaConfig
-    }
+class AlphaPageTransformer(
+        private var minAlpha: Float
+) : ViewPager.PageTransformer {
 
     override fun transformPage(page: View?, position: Float) {
         val alpha: Float = when {

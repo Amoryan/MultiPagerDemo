@@ -9,7 +9,8 @@ import com.yanfangxiong.multipagerdemo.tranformer.RotatePageTransformer
 class RotatePageTransformerFactory : PageTransformerFactory {
 
     override fun generatePageTransformer(): ViewPager.PageTransformer {
-        return RotatePageTransformer()
+        val defaultDegree = 10f
+        return RotatePageTransformer(defaultDegree)
     }
 
 }
