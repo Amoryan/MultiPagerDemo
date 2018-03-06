@@ -80,7 +80,8 @@ public interface PageTransformer {
 2. -1 <= position < 0
 3. 0 <= position < 1
 4. position > 1
-　　于是乎我写了这样ScalePageTransformer类。
+## ScalePageTransformer
+　　于是乎我写了一个切换尺寸变换的类ScalePageTransformer，如下。
 ```kotlin
 class ScalePageTransformer : ViewPager.PageTransformer {
 
@@ -108,3 +109,52 @@ class ScalePageTransformer : ViewPager.PageTransformer {
 ```
 　　效果图如下，这样就比较有趣了，嗯，我是这么认为的。日子还长，别太失望~<br />
 ![scaleResult](/images/scaleResult.gif)
+## RotatePageTransformer
+　　旋转跳跃，我闭着眼~
+```kotlin
+class RotatePageTransformer : ViewPager.PageTransformer {
+
+    companion object {
+        const val DEFAULT_ROTATE_DEGREE: Float = 10f
+    }
+
+    private var rotateDegree: Float = DEFAULT_ROTATE_DEGREE
+
+    fun setRotateDegree(degree: Float) {
+        this.rotateDegree = degree
+    }
+
+    override fun transformPage(page: View?, position: Float) {
+        if (page == null) return
+
+        val tPivotX: Float
+        val degree: Float
+        when {
+            position < -1 -> {
+                tPivotX = page.width.toFloat()
+                degree = -rotateDegree
+            }
+            position >= -1 && position < 0 -> {
+                tPivotX = page.width.toFloat()
+                degree = rotateDegree * position
+            }
+            position >= 0 && position < 1 -> {
+                tPivotX = 0f
+                degree = rotateDegree * position
+            }
+            else -> {
+                tPivotX = 0f
+                degree = rotateDegree
+            }
+        }
+        page.apply {
+            pivotX = tPivotX
+            pivotY = if (rotateDegree < 0) 0f else page.height.toFloat()
+            rotation = degree
+        }
+    }
+
+}
+```
+　　来看看这个旋转变换的效果图。<br />
+![rotateResult](/images/rotateResult.gif)

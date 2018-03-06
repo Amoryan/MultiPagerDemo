@@ -50,6 +50,6 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-        viewPager.setPageTransformer(false, ScalePageTransformer())
+        viewPager.setPageTransformer(false, RotatePageTransformer())
     }
 }
